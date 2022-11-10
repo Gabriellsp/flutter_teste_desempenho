@@ -11,6 +11,7 @@ class _ProcessingPageState extends State<ProcessingPage> {
   late DateTime initialTime;
   late DateTime finalTime;
   late int processingTime;
+
   @override
   void initState() {
     super.initState();
@@ -19,7 +20,7 @@ class _ProcessingPageState extends State<ProcessingPage> {
 
   void calculationMathFunctions() {
     initialTime = DateTime.now();
-    int numberIterations = 999999999;
+    int numberIterations = 100000000;
     for (int i = 0; i < numberIterations; i++) {
       var cosseno = cos(i);
       var seno = sin(cosseno);
