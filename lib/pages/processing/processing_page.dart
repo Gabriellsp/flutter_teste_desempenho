@@ -40,7 +40,7 @@ class _ProcessingPageState extends State<ProcessingPage> {
         child: SizedBox(
           width: 200,
           child: Text('Tempo de processamento: $processingTime milissegundos!',
-              style: const TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16, color: Colors.white),
               textAlign: TextAlign.center),
         ),
       ),
