@@ -27,7 +27,7 @@ class Db {
 
   Future _onCreate(Database db, int version) async {
     await db.execute(
-      "CREATE TABLE marvelCharacter(id INTEGER PRIMARY KEY, name TEXT, description TEXT, thumbnailUrl TEXT);",
+      "CREATE TABLE marvelCharacter(id INTEGER, name TEXT, description TEXT, thumbnailUrl TEXT);",
     );
   }
 }
