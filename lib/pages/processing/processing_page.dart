@@ -1,5 +1,5 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_teste_desempenho/database/shared_pref.dart';
 
 class ProcessingPage extends StatefulWidget {
   const ProcessingPage({Key? key}) : super(key: key);
@@ -8,26 +8,29 @@ class ProcessingPage extends StatefulWidget {
 }
 
 class _ProcessingPageState extends State<ProcessingPage> {
-  late DateTime initialTime;
-  late DateTime finalTime;
-  late int processingTime;
+  DateTime? initialTime;
+  DateTime? finalTime;
+  int? processingTime;
 
   @override
   void initState() {
     super.initState();
-    calculationMathFunctions();
+    sharedPrefTest();
   }
 
-  void calculationMathFunctions() {
+  Future<void> sharedPrefTest() async {
     initialTime = DateTime.now();
+    final _database = await SharedPref.instance.database;
     int numberIterations = 100000000;
     for (int i = 0; i < numberIterations; i++) {
-      var cosseno = cos(i);
-      var seno = sin(cosseno);
-      var tangente = tan(seno);
+      await _database.setString('number', i.toString());
+      // ignore: unused_local_variable
+      var number = _database.getString('number');
     }
     finalTime = DateTime.now();
-    processingTime = finalTime.difference(initialTime).inMilliseconds;
+    setState(() {
+      processingTime = finalTime!.difference(initialTime!).inMilliseconds;
+    });
   }
 
   @override

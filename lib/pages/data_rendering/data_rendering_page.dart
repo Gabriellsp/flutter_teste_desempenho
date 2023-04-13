@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_teste_desempenho/database/database.dart';
 import 'package:flutter_teste_desempenho/models/marvel_character.dart';
 import 'package:flutter_teste_desempenho/pages/data_rendering/widgets/card_marvel_character.dart';
 import 'package:flutter_teste_desempenho/repository/marvel_repository.dart';
@@ -28,6 +29,10 @@ class _DataRenderingPageState extends State<DataRenderingPage> {
     for (int i = 0; i < 1000; i = i + 100) {
       var listByOffset = await _repository.getMarvelCharacters(i);
       resultList.addAll(listByOffset);
+    }
+    final _database = await Db.internal().database;
+    for (int i = 0; i < resultList.length; i++) {
+      _database.insert('marvelCharacter', resultList[i].toDatabase());
     }
 
     setState(() {

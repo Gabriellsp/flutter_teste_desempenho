@@ -32,4 +32,13 @@ class MarvelCharacter {
     }
     return data;
   }
+
+  Map<String, dynamic> toDatabase() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['description'] = description;
+    data['thumbnailUrl'] = '${thumbnail!.path!}.${thumbnail!.extension!}';
+    return data;
+  }
 }
