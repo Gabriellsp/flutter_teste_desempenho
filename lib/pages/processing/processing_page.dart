@@ -20,12 +20,11 @@ class _ProcessingPageState extends State<ProcessingPage> {
 
   Future<void> sharedPrefTest() async {
     initialTime = DateTime.now();
-    final _database = await SharedPref.instance.database;
-    int numberIterations = 100000000;
-    for (int i = 0; i < numberIterations; i++) {
-      await _database.setString('number', i.toString());
-      // ignore: unused_local_variable
-      var number = _database.getString('number');
+    final _sharedPref = await SharedPref.instance.database;
+    int numberIterations = 10;
+    await _sharedPref.setInt('number', 0);
+    for (int i = 0; i < numberIterations; i = _sharedPref.getInt('number')!) {
+      await _sharedPref.setInt('number', i + 1);
     }
     finalTime = DateTime.now();
     setState(() {
