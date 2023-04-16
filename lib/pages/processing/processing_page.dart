@@ -24,8 +24,8 @@ class _ProcessingPageState extends State<ProcessingPage> {
     int numberIterations = 10;
     await _sharedPref.setInt('number', 0);
     var i = 0;
-    while(i<numberIterations){
-      i = _sharedPref.getInt('number')!
+    while (i < numberIterations) {
+      i = _sharedPref.getInt('number')!;
       await _sharedPref.setInt('number', i + 1);
     }
     finalTime = DateTime.now();
